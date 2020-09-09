@@ -180,7 +180,8 @@ class MySQLExplorer(RelDbExplorer):
             INFORMATION_SCHEMA.COLUMNS
         WHERE
             TABLE_SCHEMA NOT IN ('information_schema', 'performance_schema', 'sys', 'mysql')
-            AND DATA_TYPE RLIKE 'char.*|varchar.*|text'
+            AND (TABLE_NAME, COLUMN_NAME) IN (select table_name,column_name from eaas_s4.pii_train_columns)
+            AND DATA_TYPE REGEXP 'char|varchar|text|int|tinyint|smallint|bigint|float|datetime|timestamp'
         ORDER BY table_schema, table_name, column_name
     """
 

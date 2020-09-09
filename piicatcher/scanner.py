@@ -80,13 +80,15 @@ class ColumnNameScanner(Scanner):
         ),
         PiiTypes.GENDER: re.compile("^.*(gender).*$", re.IGNORECASE),
         PiiTypes.NATIONALITY: re.compile("^.*(nationality).*$", re.IGNORECASE),
-        PiiTypes.ADDRESS: re.compile(
-            "^.*(address|city|state|county|country|" "zipcode|postal|zone|borough).*$",
-            re.IGNORECASE,
-        ),
+        PiiTypes.ADDRESS: re.compile("^.*(address|city|state|county|country|" "zipcode|postal|zone|borough|mail|street|zip|geo|theatre|theater|region).*$", re.IGNORECASE),
         PiiTypes.USER_NAME: re.compile("^.*user(id|name|).*$", re.IGNORECASE),
-        PiiTypes.PASSWORD: re.compile("^.*pass.*$", re.IGNORECASE),
+        PiiTypes.PASSWORD: re.compile("^.*(pass|reminder).*$", re.IGNORECASE),
         PiiTypes.SSN: re.compile("^.*(ssn|social).*$", re.IGNORECASE),
+        PiiTypes.URL: re.compile("^.*(url|link).*$", re.IGNORECASE),
+        PiiTypes.FREE_TEXT: re.compile("^.*(comment|notes|desc|text).*$", re.IGNORECASE),
+        PiiTypes.SOCIAL: re.compile("^.*(fb|facebook|linked|twitter|instagram|skype|whatsapp).*$", re.IGNORECASE),
+        PiiTypes.ADMINISTRATIVE: re.compile("^.*(userid|username|email|cert|regist|ccexp|ccnumber|expirationdate|enddate|startdate|accountid|elpid|uuid|tenantid|associationid|cscoid|domain|phone|cco|contact|billing|bill|shipping|ship|soldto|cisco|cec|order|deal|logged).*$", re.IGNORECASE),
+        PiiTypes.HR: re.compile("^.*(userid|username|firstname|mailing|lastname|middlename|legalname|extension).*$", re.IGNORECASE),
     }
 
     def scan(self, text):
