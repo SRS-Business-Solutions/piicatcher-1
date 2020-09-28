@@ -68,8 +68,8 @@ class ColumnNameScanner(Scanner):
     regex = {
         PiiTypes.PERSON: re.compile(
             "^.*(firstname|fname|lastname|lname|"
-            "fullname|maidenname|_name|"
-            "nickname|name_suffix|name).*$",
+            "fullname|maidenname|"
+            "nickname|name_suffix).*$",
             re.IGNORECASE,
         ),
         PiiTypes.EMAIL: re.compile("^.*(email|e-mail|mail).*$", re.IGNORECASE),
@@ -82,13 +82,13 @@ class ColumnNameScanner(Scanner):
         PiiTypes.NATIONALITY: re.compile("^.*(nationality).*$", re.IGNORECASE),
         PiiTypes.ADDRESS: re.compile("^.*(address|city|state|county|country|" "zipcode|postal|zone|borough|mail|street|zip|geo|theatre|theater|region).*$", re.IGNORECASE),
         PiiTypes.USER_NAME: re.compile("^.*user(id|name|).*$", re.IGNORECASE),
-        PiiTypes.PASSWORD: re.compile("^.*(pass|reminder).*$", re.IGNORECASE),
+        PiiTypes.PASSWORD: re.compile("^.*(passw|reminder).*$", re.IGNORECASE),
         PiiTypes.SSN: re.compile("^.*(ssn|social).*$", re.IGNORECASE),
         PiiTypes.URL: re.compile("^.*(url|link).*$", re.IGNORECASE),
         PiiTypes.FREE_TEXT: re.compile("^.*(comment|notes|desc|text).*$", re.IGNORECASE),
         PiiTypes.SOCIAL: re.compile("^.*(fb|facebook|linked|twitter|instagram|skype|whatsapp).*$", re.IGNORECASE),
-        PiiTypes.ADMINISTRATIVE: re.compile("^.*(userid|username|email|cert|regist|ccexp|ccnumber|expirationdate|enddate|startdate|accountid|elpid|uuid|tenantid|associationid|cscoid|domain|phone|cco|contact|billing|bill|shipping|ship|soldto|cisco|cec|order|deal|logged).*$", re.IGNORECASE),
-        PiiTypes.HR: re.compile("^.*(userid|username|firstname|mailing|lastname|middlename|legalname|extension).*$", re.IGNORECASE),
+        PiiTypes.ADMINISTRATIVE: re.compile("^.*(email|cert|regist|ccexp|ccnumber|expirationdate|accountid|elpid|uuid|tenantid|associationid|cscoid|domain|phone|cco|contact|billing|bill|shipping|ship|soldto|cisco|cec|order|deal|logged).*$", re.IGNORECASE),
+        PiiTypes.HR: re.compile("^.*(user_id|userid|user_name|username|full_name|fullname|first_name|firstname|mailing|last_name|lastname|middle_name|middlename|legalname|extension|edby|ed_by).*$", re.IGNORECASE),
     }
 
     def scan(self, text):
