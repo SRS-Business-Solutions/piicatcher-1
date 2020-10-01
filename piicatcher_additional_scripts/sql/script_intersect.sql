@@ -1,0 +1,1 @@
+select distinct q1.column_name from (select * from (select * from columns order by rand(9)) q where mod(ordinal_position, rand(1)) not between 0.30 and .75) q1 inner join  (select * from (select * from columns order by rand(9)) q where mod(ordinal_position, rand(1)) between 0.30 and .75) q2 on q1.column_name = q2.column_name;
